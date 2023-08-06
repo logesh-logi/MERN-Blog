@@ -28,7 +28,7 @@ mongoose
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "https://mern-blogs32.netlify.app",
   })
 );
 app.use(express.json());

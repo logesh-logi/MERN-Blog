@@ -5,7 +5,7 @@ function IndexPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5500/post").then((response) => {
+    fetch("https://mernblog-tdm1.onrender.com/post").then((response) => {
       response.json().then((data) => {
         setPosts(data);
       });

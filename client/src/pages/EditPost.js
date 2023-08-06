@@ -61,7 +61,7 @@ function EditPost() {
     if (files?.[0]) {
       data.append("file", files?.[0]);
     }
-    const response = await fetch("http://localhost:5500/post", {
+    const response = await fetch("https://mernblog-tdm1.onrender.com/post", {
       method: "PUT",
       body: data,
       headers: {
