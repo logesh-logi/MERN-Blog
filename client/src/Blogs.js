@@ -7,10 +7,7 @@ function Blogs({ _id, title, summary, content, cover, createdAt, author }) {
     <div className="blogs-entry">
       <div className="image">
         <Link to={`/post/${_id}`}>
-          <img
-            src={"https://mernblog-tdm1.onrender.com/uploads" + cover}
-            alt="img"
-          />
+          <img src={"https://mernblog-tdm1.onrender.com/" + cover} alt="img" />
         </Link>
       </div>
       <div className="text">
