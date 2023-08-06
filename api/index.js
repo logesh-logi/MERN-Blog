@@ -103,7 +103,6 @@ app.post("/post", upload.single("file"), async (req, res) => {
   const ext = parts[parts.length - 1];
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
-  console.log("req");
   const token = req.headers["x-access-token"];
   try {
     jwt.verify(token, secretKey, {}, async (err, info) => {
@@ -150,7 +149,6 @@ app.put("/post", upload.single("file"), async (req, res) => {
     const ext = parts[parts.length - 1];
     newPath = path + "." + ext;
     fs.renameSync(path, newPath);
-    console.log(req.file);
   }
 
   const token = req.headers["x-access-token"];
