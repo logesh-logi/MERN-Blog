@@ -6,7 +6,7 @@ function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   useEffect(
     () => {
-      fetch("http://localhost:5500/profile", {
+      fetch("https://mernblog-tdm1.onrender.com/profile", {
         credentials: "include",
         headers: {
           "x-access-token": localStorage.getItem("token"),
@@ -21,7 +21,7 @@ function Header() {
   );
 
   function logout() {
-    fetch("http://localhost:5500/logout", {
+    fetch("https://mernblog-tdm1.onrender.com/logout", {
       credentials: "include",
       method: "POST",
     });
