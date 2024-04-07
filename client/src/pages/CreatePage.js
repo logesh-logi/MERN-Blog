@@ -46,7 +46,7 @@ function Createpage() {
     data.append("summary", summary);
     data.append("content", content);
     data.append("file", files[0]);
-    const response = await fetch("https://mernblog-tdm1.onrender.com/post", {
+    const response = await fetch("http://localhost:5500/post", {
       credentials: "include",
       headers: {
         "x-access-token": localStorage.getItem("token"),

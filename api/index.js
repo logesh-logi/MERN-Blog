@@ -12,23 +12,21 @@ const upload = multer({ dest: "uploads/" });
 const Post = require("./model/Post");
 
 const app = express();
+require("dotenv").config();
 
 //connecting to mongodb
-mongoose
-  .connect(
-    "mongodb+srv://logesh3527:PFMmNGemuZY7ejAI@cluster0.j1m2rnv.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("db connected");
-    app.listen(5500, () => {
-      console.log("server listening");
-    });
+
+mongoose.connect(process.env.MONGO_URL).then(() => {
+  console.log("db connected");
+  app.listen(5500, () => {
+    console.log("server listening");
   });
+});
 
 app.use(
   cors({
     credentials: true,
-    origin: "https://mern-blogs32.netlify.app",
+    origin: process.env.CLIENT_URL,
   })
 );
 app.use(express.json());
@@ -37,15 +35,15 @@ app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 const salt = bcrypt.genSaltSync(10);
-const secretKey = "djfhiobveyybeopeiuveg#@@@fje9ne309u@$&huu%*2b";
+const secretKey = process.env.SCERET_KEY;
 
 //Routes
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
-  // const existingUser = await User.findOne({ username });
-  // if (existingUser) {
-  //   return res.status(409).json({ error: "Username already exists" });
-  // }
+  const existingUser = await User.findOne({ username });
+  if (existingUser) {
+    return res.status(409).json({ error: "Username already exists" });
+  }
   try {
     const userDoc = await User.create({
       username,

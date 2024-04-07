@@ -4,16 +4,13 @@ function RegisterPage() {
   //
   async function register(ev) {
     ev.preventDefault();
-    const response = await fetch(
-      "https://mernblog-tdm1.onrender.com/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }
-    );
+    const response = await fetch("http://localhost:5500/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
     if (response.status === 200) alert("Registeration Successfull");
     else alert("Registeration failed");
   }

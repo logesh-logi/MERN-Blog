@@ -10,7 +10,7 @@ function LoginPage() {
 
   async function login(ev) {
     ev.preventDefault();
-    const response = await fetch("https://mernblog-tdm1.onrender.com/login", {
+    const response = await fetch("http://localhost:5500/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
